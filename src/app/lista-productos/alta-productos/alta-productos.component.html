@@ -1,0 +1,19 @@
+<div>
+  <form [formGroup]="form" #frmProducto="ngForm" (ngSubmit)="operar()">
+    @if(edicion){
+      <label for=""> Id Producto</label>
+      <input placeholder="Id producto" [readOnly]="true" formControlName="idProducto">
+    }@else{
+      <label for=""> Id Producto</label>
+      <input placeholder="Id producto" formControlName="idProducto">
+    }
+      <label for=""> Nombre</label>
+      <input placeholder="Nombre de producto" required formControlName="nombreProducto">
+      <label for=""> Precio Unitario</label>
+      <input placeholder="precio"  required formControlName="precioUnitario">
+      <label for=""> Discontinuado</label>
+      <input placeholder="0 o 1" required formControlName="discontinuado">
+      <button type="submit" [disabled]="frmProducto.invalid">Aceptar</button>
+      <button type="button" routerLink="">Cancelar</button>
+  </form>
+</div>

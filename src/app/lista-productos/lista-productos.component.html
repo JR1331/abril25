@@ -1,11 +1,21 @@
 <h1>Lista de productos</h1>
-@for (item of productos; track item.idProducto) {
-    <ul>
-        <li>
-            {{item.idProducto}} {{item.nombreProducto}} {{item.precioUnitario}}
-        </li>
-    </ul>
-}
-@empty {
-    <p>No hay datos</p>
-}
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Precio Unitario</th>
+        <th>Discontinuado</th>
+    </tr>
+    @for (producto of productos; track producto.idProducto) {
+        <tr>
+            <th>{{producto.idProducto}}</th>
+            <th>{{producto.nombreProducto}}</th>
+            <th>{{producto.precioUnitario}}</th>
+            <th>{{producto.discontinuado}}</th>
+            <th><button type="button" [routerLink]="['edicion',producto.idProducto]">Modificar</button></th>
+            <th><button type="button" (click)="eliminar(producto.idProducto)">Eliminar</button></th>
+        </tr>
+    }
+</table>
+<button routerLink="alta">Alta a un nuevo empelado</button>
+<router-outlet></router-outlet>
